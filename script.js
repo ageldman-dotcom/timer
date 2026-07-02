@@ -7,6 +7,27 @@ const secondsDisplay = document.getElementById('seconds');
 const endTimeDisplay = document.getElementById('endTime');
 const statusDisplay = document.getElementById('status');
 const resetBtn = document.getElementById('resetBtn');
+const themeBtn = document.getElementById('themeBtn');
+
+// Theme toggle functionality
+let isDarkTheme = localStorage.getItem('theme') === 'melancholy';
+
+function initTheme() {
+    if (isDarkTheme) {
+        document.body.classList.add('melancholy');
+        themeBtn.textContent = '☀️ Vibrant Mode';
+    } else {
+        document.body.classList.remove('melancholy');
+        themeBtn.textContent = '🌙 Melancholy Mode';
+    }
+}
+
+themeBtn.addEventListener('click', () => {
+    isDarkTheme = !isDarkTheme;
+    document.body.classList.toggle('melancholy');
+    themeBtn.textContent = isDarkTheme ? '☀️ Vibrant Mode' : '🌙 Melancholy Mode';
+    localStorage.setItem('theme', isDarkTheme ? 'melancholy' : 'vibrant');
+});
 
 // Fast end time: July 2, 2026 at 20:15 (8:15 PM) Jerusalem time (nightfall/Tzet HaKochavim)
 function getEndTime() {
@@ -36,7 +57,7 @@ function updateDisplay() {
         minutesDisplay.textContent = '00';
         secondsDisplay.textContent = '00';
         statusDisplay.textContent = '🎉 Fast has ended! G\'mar Chatima Tova!';
-        statusDisplay.style.color = '#27ae60';
+        statusDisplay.style.color = isDarkTheme ? '#2c3e50' : '#764ba2';
         return;
     }
 
@@ -49,7 +70,6 @@ function updateDisplay() {
     secondsDisplay.textContent = String(seconds).padStart(2, '0');
 
     statusDisplay.textContent = '⏰ Time remaining until fast ends';
-    statusDisplay.style.color = '#764ba2';
 }
 
 // Display end time
@@ -70,5 +90,6 @@ resetBtn.addEventListener('click', () => {
 });
 
 // Initialize
+initTheme();
 displayEndTime();
 startCountdown();

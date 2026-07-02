@@ -4,36 +4,102 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --container-bg: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --accent-color: #667eea;
+    --accent-dark: #764ba2;
+    --display-bg: #f0f0f0;
+    --btn-reset: #95a5a6;
+    --btn-reset-hover: #7f8c8d;
+    --btn-reset-shadow: rgba(149, 165, 166, 0.4);
+}
+
+body.melancholy {
+    --bg-gradient-start: #2c3e50;
+    --bg-gradient-end: #34495e;
+    --container-bg: #ecf0f1;
+    --text-primary: #2c3e50;
+    --text-secondary: #5d6d7b;
+    --accent-color: #5d6d7b;
+    --accent-dark: #34495e;
+    --display-bg: #d5dbdb;
+    --btn-reset: #566573;
+    --btn-reset-hover: #34495e;
+    --btn-reset-shadow: rgba(52, 73, 94, 0.4);
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    transition: background 0.4s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-btn {
+    padding: 10px 16px;
+    font-size: 0.95em;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: scale(1.05);
 }
 
 .container {
-    background: white;
+    background: var(--container-bg);
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     padding: 40px;
     text-align: center;
     width: 90%;
     max-width: 400px;
+    transition: all 0.4s ease;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
     font-size: 2.5em;
+    transition: color 0.4s ease;
 }
 
 .subtitle {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 1.1em;
     margin-bottom: 30px;
     font-style: italic;
+    transition: color 0.4s ease;
+}
+
+.timer-display {
+    background: var(--display-bg);
+    border-radius: 15px;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    transition: background 0.4s ease;
 }
 
 .fast-info {
@@ -41,24 +107,19 @@ h1 {
 }
 
 .end-time {
-    color: #764ba2;
+    color: var(--accent-dark);
     font-size: 1.3em;
     font-weight: bold;
-}
-
-.timer-display {
-    background: #f0f0f0;
-    border-radius: 15px;
-    padding: 40px 20px;
-    margin-bottom: 30px;
+    transition: color 0.4s ease;
 }
 
 .time {
     font-size: 4em;
     font-weight: bold;
-    color: #667eea;
+    color: var(--accent-color);
     font-family: 'Courier New', monospace;
     letter-spacing: 5px;
+    transition: color 0.4s ease;
 }
 
 .controls {
@@ -70,10 +131,11 @@ h1 {
 
 .status {
     font-size: 1.1em;
-    color: #764ba2;
+    color: var(--accent-dark);
     font-weight: bold;
     margin-bottom: 20px;
     min-height: 30px;
+    transition: color 0.4s ease;
 }
 
 .btn {
@@ -88,41 +150,13 @@ h1 {
     letter-spacing: 1px;
 }
 
-.btn-start {
-    background: #667eea;
-    color: white;
-}
-
-.btn-start:hover:not(:disabled) {
-    background: #5568d3;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.btn-stop {
-    background: #e74c3c;
-    color: white;
-}
-
-.btn-stop:hover:not(:disabled) {
-    background: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-}
-
-.btn-stop:disabled {
-    background: #bdc3c7;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
 .btn-reset {
-    background: #95a5a6;
+    background: var(--btn-reset);
     color: white;
 }
 
 .btn-reset:hover {
-    background: #7f8c8d;
+    background: var(--btn-reset-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+    box-shadow: 0 5px 15px var(--btn-reset-shadow);
 }
