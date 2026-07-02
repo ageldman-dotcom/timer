@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.fast-info {
+    margin-bottom: 15px;
+}
+
+.end-time {
+    color: #764ba2;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.timer-display {
+    background: #f0f0f0;
+    border-radius: 15px;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+.time {
+    font-size: 4em;
+    font-weight: bold;
+    color: #667eea;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 5px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.status {
+    font-size: 1.1em;
+    color: #764ba2;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-start {
+    background: #667eea;
+    color: white;
+}
+
+.btn-start:hover:not(:disabled) {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-stop {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-stop:hover:not(:disabled) {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.btn-stop:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-reset {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-reset:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+}
